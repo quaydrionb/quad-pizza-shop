@@ -1,0 +1,397 @@
+/* Global Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+/* Button and SVG Transition */
+btn,
+svg {
+  transition: all 300ms ease;
+}
+
+/* NavBar */
+.nav-bar {
+  background-color: #F0E0CA;
+  border-bottom: #6F1B19 solid 3px;
+}
+
+
+
+.nav-link {
+  color: #6F1B19;
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition: text-decoration 0.3s ease;
+}
+
+.nav-link:active {
+  color: #2B523D;
+  font-size: 1.6rem;
+}
+
+@media (min-width: 992px) {
+  .nav-link:hover {
+    color: #2B523D;
+    border-bottom: #2B523D solid 2px;
+  }
+}
+
+@media (max-width: 990px) {
+  .nav-link:hover {
+    color: #2B523D;
+    transition: all 300ms ease;
+  }
+}
+
+/* Logo and Cart Icon */
+.logo {
+  max-height: 100px;
+  max-width: 150px;
+  margin-bottom: -8px;
+  padding-bottom: -70px;
+  padding-right: 8px;
+  cursor: pointer;
+}
+
+.cart {
+  width: 30px;
+  background-color: #F0E0CA;
+  cursor: pointer;
+}
+
+/* Cart Icon Animation */
+.icon-cart {
+  cursor: pointer;
+  position: relative;
+}
+
+.icon-cart button:hover {
+  border-bottom: solid 5px #531B20;
+}
+
+.icon-cart span {
+  display: flex;
+  width: 24px;
+  height: 24px;
+  background-color: #2B523D;
+  justify-content: center;
+  align-items: center;
+  color: #F0E0CA;
+  border-radius: 50%;
+  position: absolute;
+  top: -8px;
+  right: -10px;
+  cursor: pointer;
+}
+
+/* Video Player Section */
+@media screen and (min-width: 300px) and (max-width: 767px) {
+  video {
+    object-fit: cover;
+    overflow: hidden;
+    height: 50vh;
+    width: 100%;
+  }
+
+  .order-button {
+    position: relative;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 20px;
+    font-weight: bolder;
+    background-color: #2B523D;
+    text-decoration: none;
+    color: #F0E0CA;
+    border: 1px solid;
+    border-radius: 1000px;
+    display: inline-block;
+    transition: all .2s;
+    cursor: pointer;
+  }
+}
+
+/* Larger Devices */
+@media screen and (min-width: 768px) and (max-width: 1900px) {
+  video {
+    object-fit: cover;
+    overflow: hidden;
+    height: 70vh;
+    width: 100%;
+  }
+
+  .order-button {
+    position: absolute;
+    bottom: 35px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 20px;
+    font-weight: bolder;
+    background-color: #2B523D;
+    text-decoration: none;
+    color: #F0E0CA;
+    border: 3px solid;
+    border-radius: 1000px;
+    display: inline-block;
+    transition: all .2s;
+    cursor: pointer;
+  }
+}
+
+/* Extra Large Devices */
+@media screen and (min-width: 1901px) {
+  video {
+    object-fit: cover;
+    overflow: hidden;
+    height: 65vh;
+    width: 100%;
+  }
+
+  .order-button {
+    position: absolute;
+    bottom: 170px;
+    left: 50%;
+    height: 60px;
+    width: 200px;
+    transform: translateX(-50%);
+    font-size: 30px;
+    font-weight: bolder;
+    background-color: #2B523D;
+    text-decoration: none;
+    color: #F0E0CA;
+    border: 3px solid;
+    border-radius: 1000px;
+    display: inline-block;
+    transition: all .2s;
+    cursor: pointer;
+  }
+}
+
+/* Order Button Hover Effects */
+.order-button:hover {
+  background-color: #F0E0CA;
+  box-shadow: 0 10px 20px #2B523D;
+  color: #2B523D;
+  border: 3px solid;
+}
+
+.order-button::after {
+  content: "";
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  border-radius: 100px;
+  top: 0;
+  left: 0;
+  position: absolute;
+  z-index: -1;
+  transition: all .3s;
+}
+
+.order-button:hover::after {
+  background-color: #2B523D;
+  transform: scaleX(1.4) scaleY(1.5);
+  opacity: 0;
+}
+
+/* Hero Section */
+.text-green {
+  color: #2B523D;
+}
+
+.red-text {
+  color: #6F1B19;
+}
+
+.carousel {
+  height: 60vh;
+}
+
+/* Main Button */
+.main-button {
+  background-color: #6F1B19;
+  color: white;
+}
+
+.main-button:hover {
+  background-color: #F0E0CA;
+  box-shadow: 0 10px 20px #6F1B19;
+  color: #531B20;
+  font-weight: bolder;
+}
+
+.main-button:active {
+  background-color: #531B20;
+  color: #F0E0CA;
+}
+
+/* Main Button Adjustments for Medium Devices */
+@media screen and (min-device-width: 481px) and (max-width: 980px) {
+  .main-button {
+    background-color: #6F1B19;
+    color: white;
+    margin-left: 10px;
+  }
+}
+
+/* Menu Styles */
+.view-button {
+  border: #2B523D solid 2px;
+  font-size: 16px;
+}
+
+.view-button:hover {
+  background-color: #2B523D;
+  color: #F0E0CA;
+}
+
+.menu-title {
+  color: #F0E0CA;
+  font-weight: bolder;
+  background-color: #2B523D;
+  letter-spacing: 0.4rem;
+}
+
+.menu-group-heading {
+  font-size: 1.9rem;
+  color: #6F1B19;
+  font-weight: bolder;
+  margin-bottom: 20px;
+}
+
+.menu-group {
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.menu-card {
+  background-color: #f8f9fa;
+  border: 4px solid #ddd;
+  border-radius: 5px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+/* Menu Group Adjustments for Medium Devices */
+@media (max-width: 960px) {
+  .menu-group {
+    padding: 10px;
+  }
+  .card-text {
+    font-size: 16px;
+  }
+}
+
+/* Card Image Top Adjustment */
+@media (min-width: 992px) {
+  .card-img-top {
+    height: 30vh;
+    object-fit: cover;
+  }
+}
+
+/* Card Image Top Adjustment for Medium Devices */
+@media (max-width: 991px) {
+  .card-img-top {
+    height: 50vh;
+    object-fit: cover;
+  }
+}
+
+/* Card Image Top Adjustment for Small Devices */
+@media (max-width: 767px) {
+  .card-img-top {
+    height: 50vw;
+    object-fit: cover;
+  }
+}
+
+/* About Me Section */
+.about-me-section {
+  padding: 20px;
+}
+
+.item-description {
+  line-height: 1.6;
+}
+
+/* About Me Section Padding Adjustment */
+@media (min-width: 992px) {
+  .about-me-section {
+    padding: 40px;
+  }
+}
+
+/* Snake Animation */
+.snake {
+  height: 20px;
+  background-image: linear-gradient(45deg, #2B523D 25%, transparent 25%), linear-gradient(-45deg, #2B523D 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #2B523D 75%), linear-gradient(-45deg, transparent 75%, #2B523D 75%);
+  background-size: 20px 20px;
+}
+
+.carousel-bg {
+  border: none;
+}
+
+.icon-background {
+  border: #2B523D solid 2px;
+}
+
+/* Order Image */
+.order-img {
+  width: 100%;
+  height: 40vh;
+  object-fit: cover;
+}
+
+.fade {
+  transition: opacity 0.5s ease-in-out;
+}
+
+.fade.show {
+  opacity: 1;
+}
+
+
+/* Add to Cart Button */
+.add-to-cart {
+  background-color: #f8f9fa;
+  color: #2B523D;
+  border: solid #2B523D 2px;
+  font-weight: bold;
+}
+
+.add-to-cart:hover {
+  background-color: #2B523D;
+  color: #f8f9fa;
+  font-weight: bold;
+}
+
+.add-to-cart:active {
+  background-color: #2B523D;
+  color: #f8f9fa;
+  font-weight: bold;
+}
+
+/* Footer */
+footer {
+  background-color: #531B20;
+  color: #fff;
+}
+
+.bottom-text {
+  background-color: #F0E0CA;
+  color: #6F1B19;
+  font-size: 1.1rem;
+  padding-top: 30px;
+}
+
+.back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000; /* Ensure the button is above other content */
+}
