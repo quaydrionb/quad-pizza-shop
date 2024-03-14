@@ -32,7 +32,3 @@ Delve into a world of culinary creativity with our diverse menu, meticulously cr
 While Quad Pizzeria already offers a stellar experience, we're committed to continual improvement:
 
 - **Expanded Arcade Section:** Enrich the arcade experience with new games and interactive features to keep you entertained.
-
----
-
-At Quad Pizzeria, we're passionate about delivering not just great food, but exceptional experiences. Join us as we redefine the art of pizza dining, one slice at a time.
