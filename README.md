@@ -1,5 +1,5 @@
 
-# Quad Pizzeria Website Redesigned with Next.js, Material-UI (Mui), Headless UI, and PostgreSQL
+# Quad Pizzeria Website Redesigned with Next.js, Redux, Material-UI (Mui), and Headless UI
 
 Welcome to the Quad Pizzeria website repository! 🍕 Dive into an immersive experience where you can explore and indulge in the culinary wonders of Quad Pizzeria – a vibrant pizza eatery specializing in delectable square pizzas, tantalizing wings, and heavenly desserts.
 
@@ -19,7 +19,6 @@ Delve into a world of culinary creativity with our diverse menu, meticulously cr
 - **React:** Crafting dynamic and engaging user interfaces to elevate your browsing experience.
 - **Material-UI (Mui):** Leveraging the elegance and responsiveness of Material Design for a visually stunning interface.
 - **Headless UI:** Enhancing accessibility and user interaction with customizable, style-agnostic components.
-- **PostgreSQL:** Ensuring robust and reliable data management to support our operations.
 
 ## Features
 
