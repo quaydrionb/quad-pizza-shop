@@ -49,17 +49,6 @@ const Checkout = () => {
     dispatch(clearCart());
   };
 
-  useEffect(() => {
-    // Update isLoading state based on cart data in localStorage
-    if (typeof localStorage !== "undefined") {
-      const cartData = localStorage.getItem("cart");
-      if (cartData) {
-        dispatch(getCart(JSON.parse(cartData)));
-        setIsLoading(false);
-      }
-    }
-  }, [dispatch]);
-
   const totalAmount = cartItems.reduce(
     (total, item) => total + item.price * item.quantity,
     0,
