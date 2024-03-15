@@ -10,6 +10,7 @@ import {
   clearCart,
   getCart,
 } from "@/redux/cartSlice";
+import Link from "next/link";
 
 const Checkout = () => {
   const dispatch = useDispatch();
@@ -91,13 +92,15 @@ const Checkout = () => {
                   It seems your cart is in need of a flavor boost! Explore our
                   menu and add some tasty items to satisfy those cravings.
                 </p>
-                <button
-                  className="btn btn-small btn-outline-dark rounded"
-                  onClick={() => window.history.back()}
-                  style={{ color: "white", backgroundColor: "#6F1B19" }}
-                >
-                  Return to Shopping
-                </button>
+                <Link href="/items">
+                  <button
+                    className="btn btn-small btn-outline-dark rounded"
+                    onClick={() => window.history.back()}
+                    style={{ color: "white", backgroundColor: "#6F1B19" }}
+                  >
+                    Return to Shopping
+                  </button>
+                </Link>
               </div>
             </div>
           </div>
@@ -166,13 +169,14 @@ const Checkout = () => {
               </div>
             </div>
             <div className="d-flex justify-content-between mb-4">
-              <button
-                className="btn btn-small btn-outline-dark rounded"
-                onClick={() => window.history.back()}
-                style={{ color: "white", backgroundColor: "#6F1B19" }}
-              >
-                Return to Shopping
-              </button>
+              <Link href="/items">
+                <button
+                  className="btn btn-small btn-outline-dark rounded"
+                  style={{ color: "white", backgroundColor: "#6F1B19" }}
+                >
+                  Return to Shopping
+                </button>
+              </Link>
               <button
                 className="btn btn-small btn-outline-danger rounded"
                 onClick={handleClearCart}
