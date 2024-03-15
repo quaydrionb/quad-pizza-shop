@@ -9,7 +9,6 @@ const cart = "/assets/icons/cart.svg";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
 
   const dispatch = useDispatch();
   const cartItems = useSelector((state: RootState) => state.cart.cart);
@@ -19,7 +18,6 @@ const Navbar = () => {
       const cartData = localStorage.getItem("cart");
       if (cartData) {
         dispatch(getCart(JSON.parse(cartData)));
-        setIsLoading(false);
       }
     }
   }, [dispatch]);
@@ -100,24 +98,16 @@ const Navbar = () => {
             <div className="icon-cart">
               <Link href="/checkout" onClick={toggleMenu}>
                 <button type="button" className="btn btn-sm">
-                  {isLoading ? (
-                    <div className="spinner-border text-dark" role="status">
-                      <span className="visually-hidden">Loading...</span>
-                    </div>
-                  ) : (
-                    <>
-                      <img
-                        src={cart}
-                        alt="cart"
-                        width={40}
-                        height={40}
-                        className="icon-cart"
-                      />
-                      <span id="cartAmount" className="badge bg-dark">
-                        {cartItems.length}
-                      </span>
-                    </>
-                  )}
+                  <img
+                    src={cart}
+                    alt="cart"
+                    width={40}
+                    height={40}
+                    className="icon-cart"
+                  />
+                  <span id="cartAmount" className="badge bg-dark">
+                    {cartItems.length}
+                  </span>
                 </button>
               </Link>
             </div>

@@ -13,7 +13,6 @@ import {
 
 const Checkout = () => {
   const dispatch = useDispatch();
-  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     dispatch(getCart());
@@ -42,7 +41,6 @@ const Checkout = () => {
       const cartData = localStorage.getItem("cart");
       if (cartData) {
         dispatch(getCart(JSON.parse(cartData)));
-        setIsLoading(false);
       }
     }
   }, [dispatch]);
@@ -63,9 +61,7 @@ const Checkout = () => {
       >
         Your Cart
       </h2>
-      {isLoading ? (
-        <p>Loading...</p>
-      ) : cartItems.length === 0 ? (
+      {cartItems.length === 0 ? (
         <div className="row justify-content-center mb-5">
           <div className="col-md-8 col-lg-6">
             <div className="card mt-5">
