@@ -1,15 +1,28 @@
-"use client";
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/lib/type";
+import { getCart } from "@/redux/cartSlice";
 
 const cart = "/assets/icons/cart.svg";
 
 const Navbar = () => {
-  const cartItems = useSelector((state: RootState) => state.cart.cart);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const dispatch = useDispatch();
+  const cartItems = useSelector((state: RootState) => state.cart.cart);
+
+  useEffect(() => {
+    if (typeof localStorage !== "undefined") {
+      const cartData = localStorage.getItem("cart");
+      if (cartData) {
+        dispatch(getCart(JSON.parse(cartData)));
+        setIsLoading(false);
+      }
+    }
+  }, [dispatch]);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -87,16 +100,24 @@ const Navbar = () => {
             <div className="icon-cart">
               <Link href="/checkout" onClick={toggleMenu}>
                 <button type="button" className="btn btn-sm">
-                  <img
-                    src={cart}
-                    alt="cart"
-                    width={40}
-                    height={40}
-                    className="icon-cart"
-                  />
-                  <span id="cartAmount" className="badge bg-dark">
-                    {cartItems.length}
-                  </span>
+                  {isLoading ? (
+                    <div className="spinner-border text-dark" role="status">
+                      <span className="visually-hidden">Loading...</span>
+                    </div>
+                  ) : (
+                    <>
+                      <img
+                        src={cart}
+                        alt="cart"
+                        width={40}
+                        height={40}
+                        className="icon-cart"
+                      />
+                      <span id="cartAmount" className="badge bg-dark">
+                        {cartItems.length}
+                      </span>
+                    </>
+                  )}
                 </button>
               </Link>
             </div>

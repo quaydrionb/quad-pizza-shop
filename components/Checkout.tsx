@@ -1,6 +1,5 @@
 "use client";
-// components/Checkout.tsx
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Image from "next/image";
 import { RootState } from "@/lib/type";
@@ -9,10 +8,17 @@ import {
   incrementQuantity,
   decrementQuantity,
   clearCart,
+  getCart,
 } from "@/redux/cartSlice";
 
 const Checkout = () => {
   const dispatch = useDispatch();
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    dispatch(getCart());
+  }, [dispatch]);
+
   const cartItems = useSelector((state: RootState) => state.cart.cart);
 
   const handleRemoveFromCart = (index: number) => {
@@ -31,6 +37,16 @@ const Checkout = () => {
     dispatch(clearCart());
   };
 
+  useEffect(() => {
+    if (typeof localStorage !== "undefined") {
+      const cartData = localStorage.getItem("cart");
+      if (cartData) {
+        dispatch(getCart(JSON.parse(cartData)));
+        setIsLoading(false);
+      }
+    }
+  }, [dispatch]);
+
   const totalAmount = cartItems.reduce(
     (total, item) => total + item.price * item.quantity,
     0,
@@ -47,7 +63,9 @@ const Checkout = () => {
       >
         Your Cart
       </h2>
-      {cartItems.length === 0 ? (
+      {isLoading ? (
+        <p>Loading...</p>
+      ) : cartItems.length === 0 ? (
         <div className="row justify-content-center mb-5">
           <div className="col-md-8 col-lg-6">
             <div className="card mt-5">
@@ -82,7 +100,7 @@ const Checkout = () => {
                         width={200}
                         height={400}
                         className="img-fluid rounded-start order-img"
-                        style={{ maxHeight: "200px" }} // Set max height
+                        style={{ maxHeight: "200px" }}
                       />
                     </div>
                   </div>
@@ -131,7 +149,6 @@ const Checkout = () => {
                 </p>
               </div>
             </div>
-            {/* Buttons wrapped in a div for flex layout */}
             <div className="d-flex justify-content-between mb-4">
               <button
                 className="btn btn-small btn-outline-dark rounded"

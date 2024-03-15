@@ -36,24 +36,37 @@ const cartSlice = createSlice({
       } else {
         state.cart.push({ ...newItem, quantity: 1 });
       }
+      localStorage.setItem("cart", JSON.stringify(state.cart));
     },
     incrementQuantity: (state, action: PayloadAction<number>) => {
       const index = action.payload;
       state.cart[index].quantity++;
+      localStorage.setItem("cart", JSON.stringify(state.cart));
     },
     decrementQuantity: (state, action: PayloadAction<number>) => {
       const index = action.payload;
       if (state.cart[index].quantity > 1) {
         state.cart[index].quantity--;
       }
+      localStorage.setItem("cart", JSON.stringify(state.cart));
     },
     removeFromCart: (state, action: PayloadAction<number>) => {
       const index = action.payload;
       state.cart.splice(index, 1);
+      localStorage.setItem("cart", JSON.stringify(state.cart));
     },
     clearCart: (state) => {
       state.cart = [];
+      localStorage.removeItem("cart");
     },
+    getCart: (state) => {
+      if (typeof localStorage !== "undefined") {
+        const cartData = localStorage.getItem("cart");
+        if (cartData) {
+          return { ...state, cart: JSON.parse(cartData) };
+        }
+      }
+      return state; 
   },
 });
 
@@ -63,6 +76,7 @@ export const {
   decrementQuantity,
   removeFromCart,
   clearCart,
+  getCart,
 } = cartSlice.actions;
 
 export default cartSlice.reducer;
