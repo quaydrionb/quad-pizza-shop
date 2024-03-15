@@ -1,26 +1,54 @@
+"use client";
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/lib/type";
-import { getCart } from "@/redux/cartSlice";
+import { getCart, CartItem } from "@/redux/cartSlice";
 
 const cart = "/assets/icons/cart.svg";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [cartItems, setCartItems] = useState<CartItem[]>([]); // Define the type for cartItems
 
   const dispatch = useDispatch();
-  const cartItems = useSelector((state: RootState) => state.cart.cart);
+  const cartData = useSelector((state: RootState) => state.cart.cart);
 
   useEffect(() => {
-    if (typeof localStorage !== "undefined") {
-      const cartData = localStorage.getItem("cart");
-      if (cartData) {
-        dispatch(getCart(JSON.parse(cartData)));
+    const loadCartData = () => {
+      if (typeof window !== "undefined") {
+        const storedCartData = localStorage.getItem("cart");
+        if (storedCartData) {
+          const parsedCartData = JSON.parse(storedCartData);
+          dispatch(getCart(parsedCartData));
+          setCartItems(parsedCartData.cart);
+          setIsLoading(false);
+        } else {
+          setIsLoading(false); // Set isLoading to false if cart data is not available
+        }
       }
-    }
+    };
+
+    loadCartData();
+
+    const handlePageRefresh = () => {
+      setIsLoading(true); // Set isLoading to true on page refresh
+    };
+
+    window.addEventListener("beforeunload", handlePageRefresh);
+
+    return () => {
+      window.removeEventListener("beforeunload", handlePageRefresh);
+    };
   }, [dispatch]);
+
+  useEffect(() => {
+    if (cartData && cartData.length > 0) {
+      setCartItems(cartData);
+    }
+  }, [cartData]);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -79,8 +107,6 @@ const Navbar = () => {
                 </Link>
               </li>
               <li className="nav-item">
-                {" "}
-                {/* Add this section */}
                 <Link href="/#arcade" className="nav-link" onClick={toggleMenu}>
                   Arcade
                 </Link>
@@ -98,16 +124,32 @@ const Navbar = () => {
             <div className="icon-cart">
               <Link href="/checkout" onClick={toggleMenu}>
                 <button type="button" className="btn btn-sm">
-                  <img
-                    src={cart}
-                    alt="cart"
-                    width={40}
-                    height={40}
-                    className="icon-cart"
-                  />
-                  <span id="cartAmount" className="badge bg-dark">
-                    {cartItems.length}
-                  </span>
+                  {isLoading ? (
+                    <>
+                      <div
+                        id="cartAmount"
+                        className="spinner-border"
+                        role="status"
+                      >
+                        <span className="visually-hidden">Loading...</span>
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <img
+                        src={cart}
+                        alt="cart"
+                        width={40}
+                        height={40}
+                        className="icon-cart"
+                      />
+                      <span id="cartAmount" className="badge bg-dark">
+                        {(cartItems || []).length === 0
+                          ? "0"
+                          : (cartItems || []).length}
+                      </span>
+                    </>
+                  )}
                 </button>
               </Link>
             </div>

@@ -13,8 +13,19 @@ import {
 
 const Checkout = () => {
   const dispatch = useDispatch();
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    // Check if the page is being refreshed
+    const isPageRefreshed = localStorage.getItem("isPageRefreshed");
+    if (!isPageRefreshed) {
+      setIsLoading(true);
+      localStorage.setItem("isPageRefreshed", "true");
+    } else {
+      setIsLoading(false);
+    }
+
+    // Fetch cart data
     dispatch(getCart());
   }, [dispatch]);
 
@@ -37,10 +48,12 @@ const Checkout = () => {
   };
 
   useEffect(() => {
+    // Update isLoading state based on cart data in localStorage
     if (typeof localStorage !== "undefined") {
       const cartData = localStorage.getItem("cart");
       if (cartData) {
         dispatch(getCart(JSON.parse(cartData)));
+        setIsLoading(false);
       }
     }
   }, [dispatch]);
@@ -61,7 +74,13 @@ const Checkout = () => {
       >
         Your Cart
       </h2>
-      {cartItems.length === 0 ? (
+      {isLoading ? (
+        <div className="text-center">
+          <div className="spinner-border" role="status">
+            <span className="visually-hidden">Loading...</span>
+          </div>
+        </div>
+      ) : cartItems.length === 0 ? (
         <div className="row justify-content-center mb-5">
           <div className="col-md-8 col-lg-6">
             <div className="card mt-5">
