@@ -84,7 +84,6 @@ const Checkout = () => {
                 <Link href="/items">
                   <button
                     className="btn btn-small btn-outline-dark rounded"
-                    onClick={() => window.history.back()}
                     style={{ color: "white", backgroundColor: "#6F1B19" }}
                   >
                     Return to Shopping
@@ -100,19 +99,19 @@ const Checkout = () => {
             {cartItems.map((item: any, index: number) => (
               <div className="card mb-3" key={index}>
                 <div className="row g-0">
-                  <div className="col-4 col-md-4">
+                  <div className="col-4 col-md-5 col-sm-6">
                     <div className="d-flex justify-content-center">
                       <Image
                         src={item.itemSrc}
                         alt={item.title}
                         width={200}
-                        height={400}
+                        height={200}
                         className="img-fluid rounded-start order-img"
                         style={{ maxHeight: "200px" }}
                       />
                     </div>
                   </div>
-                  <div className="col-8 col-md-8">
+                  <div className="col-8 col-md-7 col-sm-6">
                     <div className="card-body">
                       <h5 className="card-title">{item.title}</h5>
                       <p className="card-text">Price: ${item.price}</p>
