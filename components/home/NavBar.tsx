@@ -1,54 +1,32 @@
-"use client";
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/lib/type";
-import { getCart, CartItem } from "@/redux/cartSlice";
+import { getCart } from "@/redux/cartSlice";
 
 const cart = "/assets/icons/cart.svg";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const [cartItems, setCartItems] = useState<CartItem[]>([]); // Define the type for cartItems
 
   const dispatch = useDispatch();
-  const cartData = useSelector((state: RootState) => state.cart.cart);
+  const cartItems = useSelector((state: RootState) => state.cart.cart);
 
   useEffect(() => {
-    const loadCartData = () => {
-      if (typeof window !== "undefined") {
-        const storedCartData = localStorage.getItem("cart");
-        if (storedCartData) {
-          const parsedCartData = JSON.parse(storedCartData);
-          dispatch(getCart(parsedCartData));
-          setCartItems(parsedCartData.cart);
-          setIsLoading(false);
-        } else {
-          setIsLoading(false); // Set isLoading to false if cart data is not available
-        }
-      }
-    };
-
-    loadCartData();
-
-    const handlePageRefresh = () => {
-      setIsLoading(true); // Set isLoading to true on page refresh
-    };
-
-    window.addEventListener("beforeunload", handlePageRefresh);
-
-    return () => {
-      window.removeEventListener("beforeunload", handlePageRefresh);
-    };
-  }, [dispatch]);
-
-  useEffect(() => {
-    if (cartData && cartData.length > 0) {
-      setCartItems(cartData);
+    // Check if the page is being refreshed
+    const isPageRefreshed = localStorage.getItem("isPageRefreshed");
+    if (!isPageRefreshed) {
+      setIsLoading(true);
+      localStorage.setItem("isPageRefreshed", "true");
+    } else {
+      setIsLoading(false);
     }
-  }, [cartData]);
+
+    // Fetch cart data
+    dispatch(getCart());
+  }, [dispatch]);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -107,6 +85,8 @@ const Navbar = () => {
                 </Link>
               </li>
               <li className="nav-item">
+                {" "}
+                {/* Add this section */}
                 <Link href="/#arcade" className="nav-link" onClick={toggleMenu}>
                   Arcade
                 </Link>
@@ -126,11 +106,7 @@ const Navbar = () => {
                 <button type="button" className="btn btn-sm">
                   {isLoading ? (
                     <>
-                      <div
-                        id="cartAmount"
-                        className="spinner-border"
-                        role="status"
-                      >
+                      <div className="spinner-border" role="status">
                         <span className="visually-hidden">Loading...</span>
                       </div>
                     </>
@@ -144,9 +120,7 @@ const Navbar = () => {
                         className="icon-cart"
                       />
                       <span id="cartAmount" className="badge bg-dark">
-                        {(cartItems || []).length === 0
-                          ? "0"
-                          : (cartItems || []).length}
+                        {cartItems.length}
                       </span>
                     </>
                   )}
