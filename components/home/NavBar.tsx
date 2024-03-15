@@ -16,9 +16,8 @@ const Navbar = () => {
 
   useEffect(() => {
   // Fetch cart data
-  dispatch(getCart()).then(() => {
-    setIsLoading(false);
-  });
+  dispatch(getCart());
+  setIsLoading(false);
 
   // Check if the page is being refreshed
   const isPageRefreshed = localStorage.getItem("isPageRefreshed");
@@ -26,6 +25,7 @@ const Navbar = () => {
     localStorage.setItem("isPageRefreshed", "true");
   } 
 }, [dispatch]);
+
 
 
   const toggleMenu = () => {
