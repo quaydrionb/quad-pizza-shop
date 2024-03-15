@@ -19,10 +19,11 @@ const Checkout = () => {
     // Check if the page is being refreshed
     const isPageRefreshed = localStorage.getItem("isPageRefreshed");
     if (!isPageRefreshed) {
-      setIsLoading(true);
       localStorage.setItem("isPageRefreshed", "true");
     } else {
-      setIsLoading(false);
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 1000); // Set loading state to false after 1 second
     }
 
     // Fetch cart data
