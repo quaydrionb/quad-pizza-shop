@@ -1,5 +1,6 @@
 "use client";
-import Checkout from "@/components/Checkout";
+
+import ShoppingCart from "@/components/ShoppingCart";
 import store from "@/redux/store";
 import React from "react";
 import { Provider } from "react-redux";
@@ -7,7 +8,7 @@ import { Provider } from "react-redux";
 const page = () => {
   return (
     <Provider store={store}>
-      <Checkout />
+      <ShoppingCart />
     </Provider>
   );
 };

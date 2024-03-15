@@ -103,7 +103,7 @@ const Navbar = () => {
               </li>
             </ul>
             <div className="icon-cart">
-              <Link href="/checkout" onClick={toggleMenu}>
+              <Link href="/cart" onClick={toggleMenu}>
                 <button type="button" className="btn btn-sm">
                   {isLoading ? (
                     <>

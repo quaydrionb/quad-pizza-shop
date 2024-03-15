@@ -12,7 +12,7 @@ import {
 } from "@/redux/cartSlice";
 import Link from "next/link";
 
-const Checkout = () => {
+const ShoppingCart = () => {
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(true);
 
@@ -179,4 +179,4 @@ const Checkout = () => {
   );
 };
 
-export default Checkout;
+export default ShoppingCart;
