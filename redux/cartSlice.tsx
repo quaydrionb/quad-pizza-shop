@@ -66,7 +66,8 @@ const cartSlice = createSlice({
           return { ...state, cart: JSON.parse(cartData) };
         }
       }
-      return state; 
+      return state;
+    },
   },
 });
 
