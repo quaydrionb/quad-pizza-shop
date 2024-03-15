@@ -2,6 +2,8 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Button from "@mui/material/Button";
+import Snackbar from "@mui/material/Snackbar";
+import MuiAlert from "@mui/material/Alert";
 import { useDispatch } from "react-redux";
 import { addToCart } from "@/redux/cartSlice";
 import Selector from "./Selector";
@@ -21,7 +23,7 @@ interface Props {
 
 const ProductCard = ({ itemId, itemSrc, alt, title, desc, price }: Props) => {
   const [selectedSize, setSelectedSize] = useState("small");
-  const [showAlert, setShowAlert] = useState(false); // State to control alert visibility
+  const [openAlert, setOpenAlert] = useState(false); // State to control alert visibility
   const dispatch = useDispatch();
 
   const handleSizeChange = (size: string) => {
@@ -41,32 +43,32 @@ const ProductCard = ({ itemId, itemSrc, alt, title, desc, price }: Props) => {
           quantity: 1,
         }),
       );
-      setShowAlert(true); // Show the alert
-      setTimeout(() => {
-        setShowAlert(false); // Hide the alert after 3 seconds
-      }, 3000);
+      setOpenAlert(true); // Show the alert
     } else {
       alert("Price not available for the selected size");
     }
   };
 
+  const handleCloseAlert = () => {
+    setOpenAlert(false); // Hide the alert
+  };
+
   return (
     <div className="position-relative" style={{ width: "18rem" }}>
-      {/* Alert */}
-      {showAlert && (
-        <div
-          className="alert alert-light alert-dismissible fade show position-fixed top-0 start-50 translate-middle-x"
-          role="alert"
-          style={{ zIndex: 999 }}
+      <Snackbar
+        open={openAlert}
+        autoHideDuration={3000}
+        onClose={handleCloseAlert}
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+      >
+        <MuiAlert
+          onClose={handleCloseAlert}
+          severity="success"
+          sx={{ width: "100%" }}
         >
-          <strong>Success!</strong> Item added to cart.
-          <button
-            type="button"
-            className="btn-close"
-            onClick={() => setShowAlert(false)}
-          ></button>
-        </div>
-      )}
+          Item added to cart.
+        </MuiAlert>
+      </Snackbar>
 
       <div className="card rounded-3 shadow" style={{ width: "100%" }}>
         <Image
