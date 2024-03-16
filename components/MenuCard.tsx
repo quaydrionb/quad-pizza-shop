@@ -1,5 +1,3 @@
-"use client";
-
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
@@ -11,7 +9,6 @@ interface Props {
   title: string;
   desc: string;
   prices?: number;
-  price?: number;
   id: string;
 }
 
@@ -31,11 +28,13 @@ const MenuCard = ({ itemSrc, alt, title, desc, prices, id }: Props) => {
       style={{
         scale: scaleProgress,
         opacity: opacityProgress,
+        maxWidth: "100%",
       }}
+      className="mb-4"
     >
-      <div className="card mb-4 rounded-3 shadow">
+      <div className="card rounded-3 shadow">
         <div className="row g-0">
-          <div className="col-sm-5 col-md-4">
+          <div className="col-md-4">
             <Image
               src={itemSrc}
               alt={alt}
@@ -44,14 +43,12 @@ const MenuCard = ({ itemSrc, alt, title, desc, prices, id }: Props) => {
               className="card-img-top img-fluid rounded-start"
             />
           </div>
-          <div className="col-sm-7 col-md-8 col-xl-6">
+          <div className="col-md-8">
             <div className="card-body">
               <h5 className="card-title mb-2">{title}</h5>
               <p className="card-text mb-3 fs-5">{desc}</p>
-              <div className="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center">
-                <span className="fw-bold fs-5  mb-2 mb-sm-0 d-none d-md-inline">
-                  ${prices}
-                </span>
+              <div className="d-flex flex-column flex-md-row justify-content-between align-items-center">
+                <span className="fw-bold fs-5 mb-2 mb-md-0">${prices}</span>
                 <Modal
                   productId={id}
                   title={title}
@@ -60,7 +57,6 @@ const MenuCard = ({ itemSrc, alt, title, desc, prices, id }: Props) => {
                   desc={desc}
                 />
               </div>
-              <div className="mt-2"></div>
             </div>
           </div>
         </div>

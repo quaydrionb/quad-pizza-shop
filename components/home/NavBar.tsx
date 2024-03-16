@@ -59,23 +59,12 @@ const Navbar = () => {
           </button>
 
           <div
-            className={`collapse navbar-collapse ${isMenuOpen ? "show" : ""}`}
+            className={`collapse navbar-collapse justify-content-end ${
+              isMenuOpen ? "show" : ""
+            }`}
             id="navbarNav"
           >
-            <ul
-              className="navbar-nav ms-auto fw-bold"
-              onClick={(event) => {
-                event.preventDefault();
-
-                const target = event.target as HTMLLinkElement;
-                const id = target.getAttribute("href")?.replace("/#", "");
-                const element = document.getElementById(String(id));
-
-                element?.scrollIntoView({
-                  behavior: "smooth",
-                });
-              }}
-            >
+            <ul className="navbar-nav fw-bold">
               <li className="nav-item">
                 <Link href="/#menu" className="nav-link" onClick={toggleMenu}>
                   Menu
@@ -87,8 +76,6 @@ const Navbar = () => {
                 </Link>
               </li>
               <li className="nav-item">
-                {" "}
-                {/* Add this section */}
                 <Link href="/#arcade" className="nav-link" onClick={toggleMenu}>
                   Arcade
                 </Link>
@@ -107,11 +94,9 @@ const Navbar = () => {
               <Link href="/cart" onClick={toggleMenu}>
                 <button type="button" className="btn btn-sm">
                   {isLoading ? (
-                    <>
-                      <div className="spinner-border" role="status">
-                        <span className="visually-hidden">Loading...</span>
-                      </div>
-                    </>
+                    <div className="spinner-border" role="status">
+                      <span className="visually-hidden">Loading...</span>
+                    </div>
                   ) : (
                     <>
                       <img
