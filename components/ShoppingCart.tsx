@@ -1,7 +1,8 @@
+"use client";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Image from "next/image";
-import Link from "next/link";
+import { RootState } from "@/lib/type";
 import {
   removeFromCart,
   incrementQuantity,
@@ -9,13 +10,14 @@ import {
   clearCart,
   getCart,
 } from "@/redux/cartSlice";
-import { RootState } from "@/lib/type";
+import Link from "next/link";
 
 const ShoppingCart = () => {
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    // Check if the page is being refreshed
     const isPageRefreshed = localStorage.getItem("isPageRefreshed");
     if (!isPageRefreshed) {
       localStorage.setItem("isPageRefreshed", "true");
@@ -24,6 +26,8 @@ const ShoppingCart = () => {
         setIsLoading(false);
       }, 1000); // Set loading state to false after 1 second
     }
+
+    // Fetch cart data
     dispatch(getCart());
   }, [dispatch]);
 
@@ -91,11 +95,11 @@ const ShoppingCart = () => {
         </div>
       ) : (
         <div className="row">
-          <div className="col-lg-8">
+          <div className="col-md-12 col-lg-8">
             {cartItems.map((item: any, index: number) => (
               <div className="card mb-3" key={index}>
                 <div className="row g-0">
-                  <div className="col-sm-6">
+                  <div className="col-4 col-md-5 col-sm-6">
                     <div className="d-flex justify-content-center">
                       <Image
                         src={item.itemSrc}
@@ -107,7 +111,7 @@ const ShoppingCart = () => {
                       />
                     </div>
                   </div>
-                  <div className="col-sm-6">
+                  <div className="col-8 col-md-7 col-sm-6">
                     <div className="card-body">
                       <h5 className="card-title">{item.title}</h5>
                       <p className="card-text">Price: ${item.price}</p>
@@ -139,7 +143,7 @@ const ShoppingCart = () => {
               </div>
             ))}
           </div>
-          <div className="col-lg-4">
+          <div className="col-md-12 col-lg-4">
             <div className="card mb-3">
               <div className="card-body">
                 <h5 className="card-title">Shopping Cart</h5>
