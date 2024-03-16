@@ -15,18 +15,20 @@ const Navbar = () => {
   const cartItems = useSelector((state: RootState) => state.cart.cart);
 
   useEffect(() => {
-  // Fetch cart data
-  dispatch(getCart());
-  setIsLoading(false);
+    const fetchData = async () => {
+      // Fetch cart data
+      await dispatch(getCart());
+      setIsLoading(false);
+    };
 
-  // Check if the page is being refreshed
-  const isPageRefreshed = localStorage.getItem("isPageRefreshed");
-  if (!isPageRefreshed) {
-    localStorage.setItem("isPageRefreshed", "true");
-  } 
-}, [dispatch]);
+    fetchData();
 
-
+    // Check if the page is being refreshed
+    const isPageRefreshed = localStorage.getItem("isPageRefreshed");
+    if (!isPageRefreshed) {
+      localStorage.setItem("isPageRefreshed", "true");
+    }
+  }, [dispatch, setIsLoading]);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
