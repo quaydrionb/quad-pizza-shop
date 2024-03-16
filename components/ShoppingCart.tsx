@@ -1,4 +1,3 @@
-"use client";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Image from "next/image";
@@ -17,17 +16,15 @@ const ShoppingCart = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Check if the page is being refreshed
     const isPageRefreshed = localStorage.getItem("isPageRefreshed");
     if (!isPageRefreshed) {
       localStorage.setItem("isPageRefreshed", "true");
     } else {
       setTimeout(() => {
         setIsLoading(false);
-      }, 1000); // Set loading state to false after 1 second
+      }, 1000);
     }
 
-    // Fetch cart data
     dispatch(getCart());
   }, [dispatch]);
 
@@ -60,7 +57,7 @@ const ShoppingCart = () => {
   return (
     <div className="container mt-5">
       <h2
-        className="text-center text-white border rounded p-3"
+        className="text-center text-white py-3 rounded"
         style={{ backgroundColor: "#2B523D" }}
       >
         Your Cart
@@ -72,20 +69,17 @@ const ShoppingCart = () => {
           </div>
         </div>
       ) : cartItems.length === 0 ? (
-        <div className="row justify-content-center mb-5">
+        <div className="row justify-content-center my-5">
           <div className="col-md-8 col-lg-6">
-            <div className="card mt-5">
+            <div className="card p-4">
               <div className="card-body text-center">
-                <h2>Oops! Looks Like Your Cart is Craving Something.</h2>
+                <h2 className="mb-3">Your Cart is Empty</h2>
                 <p>
-                  It seems your cart is in need of a flavor boost! Explore our
-                  menu and add some tasty items to satisfy those cravings.
+                  It seems your cart is empty. Explore our menu and add some
+                  items to your cart.
                 </p>
                 <Link href="/items">
-                  <button
-                    className="btn btn-small btn-outline-dark rounded"
-                    style={{ color: "white", backgroundColor: "#6F1B19" }}
-                  >
+                  <button className="btn btn-dark rounded-pill mt-3">
                     Return to Shopping
                   </button>
                 </Link>
@@ -95,43 +89,59 @@ const ShoppingCart = () => {
         </div>
       ) : (
         <div className="row">
-          <div className="col-md-12 col-lg-8">
+          <div className="col-lg-8">
             {cartItems.map((item: any, index: number) => (
-              <div className="card mb-3" key={index}>
+              <div className="card mb-4 border-0 shadow-sm" key={index}>
                 <div className="row g-0">
-                  <div className="col-4 col-md-5 col-sm-6">
-                    <div className="d-flex justify-content-center">
+                  <div className="col-md-4">
+                    <div className="d-flex align-items-center justify-content-center h-100">
                       <Image
                         src={item.itemSrc}
                         alt={item.title}
-                        width={200}
-                        height={200}
+                        width={300}
+                        height={300}
                         className="img-fluid rounded-start order-img"
-                        style={{ maxHeight: "200px" }}
+                        style={{ objectFit: "cover" }}
                       />
                     </div>
                   </div>
-                  <div className="col-8 col-md-7 col-sm-6">
-                    <div className="card-body">
-                      <h5 className="card-title">{item.title}</h5>
-                      <p className="card-text">Price: ${item.price}</p>
-                      <p className="card-text">Size: {item.size}</p>
-                      <div className="d-flex align-items-center">
-                        <button
-                          className="btn btn-sm btn-outline-danger me-2"
-                          onClick={() => handleDecrement(index)}
+                  <div className="col-md-8">
+                    <div className="card-body d-flex flex-column h-100">
+                      <h5 className="card-title mb-3">{item.title}</h5>
+                      <div className="item-details">
+                        <div className="item-detail">
+                          <span className="detail-label">Price:</span>
+                          <span className="detail-value">${item.price}</span>
+                        </div>
+                        <div className="item-detail">
+                          <span className="detail-label">Size:</span>
+                          <span className="detail-value">{item.size}</span>
+                        </div>
+                      </div>
+                      <div className="actions mt-auto">
+                        <div
+                          className="btn-group"
+                          role="group"
+                          aria-label="Quantity"
                         >
-                          -
-                        </button>
-                        <div className="me-2">{item.quantity}</div>
+                          <button
+                            className="btn btn-sm btn-danger"
+                            onClick={() => handleDecrement(index)}
+                          >
+                            -
+                          </button>
+                          <div className="btn btn-sm btn-light">
+                            {item.quantity}
+                          </div>
+                          <button
+                            className="btn btn-sm btn-primary"
+                            onClick={() => handleIncrement(index)}
+                          >
+                            +
+                          </button>
+                        </div>
                         <button
-                          className="btn btn-sm btn-outline-primary me-2"
-                          onClick={() => handleIncrement(index)}
-                        >
-                          +
-                        </button>
-                        <button
-                          className="btn btn-sm btn-outline-danger"
+                          className="btn btn-sm btn-danger ms-auto"
                           onClick={() => handleRemoveFromCart(index)}
                         >
                           Remove
@@ -143,7 +153,8 @@ const ShoppingCart = () => {
               </div>
             ))}
           </div>
-          <div className="col-md-12 col-lg-4">
+
+          <div className="col-lg-4">
             <div className="card mb-3">
               <div className="card-body">
                 <h5 className="card-title">Shopping Cart</h5>
@@ -151,7 +162,7 @@ const ShoppingCart = () => {
                 <p className="card-text">Subtotal: ${totalAmount.toFixed(2)}</p>
                 <p className="card-text">Tax (7%): ${taxAmount.toFixed(2)}</p>
                 <hr />
-                <p className="card-text">
+                <p className="card-text fw-bold">
                   Total: ${(totalAmount + taxAmount).toFixed(2)}
                 </p>
               </div>
@@ -159,14 +170,14 @@ const ShoppingCart = () => {
             <div className="d-flex justify-content-between mb-4">
               <Link href="/items">
                 <button
-                  className="btn btn-small btn-outline-dark rounded"
-                  style={{ color: "white", backgroundColor: "#6F1B19" }}
+                  className="btn  rounded-pill text-white"
+                  style={{ backgroundColor: "#2B523D" }}
                 >
-                  Return to Shopping
+                  Continue Shopping
                 </button>
               </Link>
               <button
-                className="btn btn-small btn-outline-danger rounded"
+                className="btn btn-danger rounded-pill"
                 onClick={handleClearCart}
               >
                 Clear Cart
