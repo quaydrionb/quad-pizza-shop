@@ -39,7 +39,7 @@ const Arcade = () => {
               alt={`Arcade Image ${index + 1}`}
               width={500}
               height={500}
-              className="object-fit-none border rounded carousel-bg"
+              className=" object-fit-scale rounded carousel-bg"
             />
           </div>
         ))}

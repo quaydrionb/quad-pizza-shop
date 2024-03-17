@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Image from "next/image";
 import { RootState } from "@/lib/type";
 import {
   removeFromCart,
@@ -94,12 +93,15 @@ const ShoppingCart = () => {
                 <div className="row g-0">
                   <div className="col-md-4">
                     <div className="d-flex align-items-center justify-content-center h-100">
-                      <Image
+                      <img
                         src={item.itemSrc}
-                        alt={item.title}
-                        width={200}
-                        height={200}
-                        className="rounded-start object-fit-sm-scale object-fit-lg-cover"
+                        alt={item.alt}
+                        style={{
+                          width: "220px",
+                          height: "220px",
+                          objectFit: "cover",
+                        }}
+                        className="img-thumbnail"
                       />
                     </div>
                   </div>

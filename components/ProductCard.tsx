@@ -1,6 +1,5 @@
 "use client";
 import React, { useState } from "react";
-import Image from "next/image";
 import Button from "@mui/material/Button";
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
@@ -71,14 +70,14 @@ const ProductCard = ({ itemId, itemSrc, alt, title, desc, price }: Props) => {
         </MuiAlert>
       </Snackbar>
 
-      <div className="card rounded-3 shadow" style={{ width: "100%" }}>
-        <Image
+      <div className="card rounded-3 shadow">
+        <img
           src={itemSrc}
           alt={alt}
-          width={400}
-          height={400}
-          className="card-img-top order-img"
+          style={{ width: "300px", height: "300px", objectFit: "cover" }}
+          className="img-thumbnail"
         />
+
         <div className="card-body">
           <div>
             <h5 className="card-title">
