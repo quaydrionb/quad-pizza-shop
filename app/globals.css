@@ -295,13 +295,15 @@ svg {
   margin-bottom: 20px;
 }
 @media (max-width: 576px) {
-  img {
-    width: 100%; 
-  }
+ 
   .img-thumbnail {
     height: 250px;
- 
+
    }
+
+   
+
+  
 }
 
 .object-fit-sm-scale {
