@@ -36,7 +36,7 @@ const Navbar = () => {
 
   return (
     <header>
-      <div className="container-fluid nav-bar">
+      <div className="nav-bar">
         <nav className="navbar navbar-expand-lg navbar-dark">
           <Link href="/" className="navbar-brand">
             <Image

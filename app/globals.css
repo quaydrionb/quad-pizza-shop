@@ -12,6 +12,8 @@ svg {
   transition: all 300ms ease;
 }
 
+
+
 /* NavBar */
 .nav-bar {
   background-color: #F0E0CA;
@@ -174,6 +176,10 @@ svg {
   .order-button {
     visibility: hidden;
   }
+
+  .text-xl {
+    font-size: 1.3rem;
+  }
 }
 
 /* Order Button Hover Effects */
@@ -330,21 +336,6 @@ svg {
   }
 }
 
-/* About Me Section */
-.about-me-section {
-  padding: 20px;
-}
-
-.item-description {
-  line-height: 1.6;
-}
-
-/* About Me Section Padding Adjustment */
-@media (min-width: 992px) {
-  .about-me-section {
-    padding: 40px;
-  }
-}
 
 /* Snake Animation */
 .snake {

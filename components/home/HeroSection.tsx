@@ -15,13 +15,13 @@ const displayImages = [
 const HeroSection = () => {
   return (
     <Section>
-      <div className="row flex-lg-row-reverse align-items-center g-2 py-5 container-fluid mb-5">
+      <div className="row flex-lg-row-reverse align-items-center g-2 py-5 container-fluid mx-2 mt-4">
         <div className="col-lg-6">
           <h2 className="container fw-bolder text-green fs-lg-3">
             Discover the Quad Experience: Square Pizzas for Square Lovers!
           </h2>
           <div className="container mx-auto">
-            <p className="fs-lg-2 fs-xl-1 lead">
+            <p className="fs-5 opacity-10">
               Excitement awaits you at Quad Pizzeria! Picture this: delicious
               square pizzas, mouthwatering wings, and an atmosphere buzzing with
               good vibes and arcade games. It's the perfect place to unwind and
@@ -35,11 +35,11 @@ const HeroSection = () => {
                     src="/assets/images/star.svg"
                     key={index}
                     alt="star"
-                    width={24}
-                    height={24}
+                    width={30}
+                    height={30}
                   />
                 ))}
-              <span className="mt-3 mx-2 fw-bold text-green fs-lg-3">
+              <span className="mt-3 mx-2 fw-bold text-green fs-5">
                 500 Excellent Reviews
               </span>
             </div>
@@ -65,16 +65,15 @@ const HeroSection = () => {
             interval={4000}
             showArrows={false}
             showStatus={false}
-            className="mx-auto"
           >
             {displayImages.map((image) => (
               <div className="text-center" key={image.alt}>
                 <Image
                   src={image.imageUrl}
                   alt={image.alt}
-                  width={380}
-                  height={380}
-                  className="object-fit-none border object-fit-sm-contain border"
+                  width={400}
+                  height={400}
+                  className="object-fit-none  object-fit-sm-contain "
                 />
               </div>
             ))}
