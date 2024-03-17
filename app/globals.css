@@ -18,7 +18,28 @@ svg {
   border-bottom: #6F1B19 solid 3px;
 }
 
+/* Green Background */
 
+.bg-green {
+  background-color: #2B523D;
+  color: #fff;
+}
+.bg-green:hover {
+  background-color: #2B523D;
+}
+/*Green button*/
+.btn-green {
+  border: solid 2px #2B523D;
+}
+
+.btn-green:hover {
+  background-color: #2B523D;
+  color: #f8f9fa;
+}
+
+.btn-green::after {
+  border: solid 2px #2B523D;
+}
 
 .nav-link {
   color: #6F1B19;
@@ -199,6 +220,7 @@ svg {
 .main-button {
   background-color: #6F1B19;
   color: white;
+  text-decoration: none;
 }
 
 .main-button:hover {
@@ -259,6 +281,20 @@ svg {
   padding: 20px;
   margin-bottom: 20px;
 }
+
+.object-fit-sm-scale {
+  object-fit: cover;
+  height: 100%; 
+  width: 100%; 
+}
+
+
+.object-fit-lg-cover {
+  object-fit: cover; 
+  height: 200px; 
+  width: 100%;
+}
+
 
 /* Menu Group Adjustments for Medium Devices */
 @media (max-width: 960px) {

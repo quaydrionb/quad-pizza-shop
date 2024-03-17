@@ -23,12 +23,12 @@ const Selector: React.FC<SelectorProps> = ({ onChange, prices }) => {
   return (
     <select
       onChange={handleSizeChange}
-      className="form-select-sm border-dark text-uppercase mx-3"
+      className="form-select-sm border-dark  mx-3"
       style={{ cursor: "pointer" }}
     >
       {availableSizes.map((size) => (
         <option key={size} value={size}>
-          {size}
+          {size.charAt(0).toUpperCase() + size.slice(1)}
         </option>
       ))}
     </select>

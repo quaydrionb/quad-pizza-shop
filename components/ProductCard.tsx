@@ -103,10 +103,7 @@ const ProductCard = ({ itemId, itemSrc, alt, title, desc, price }: Props) => {
         >
           <div>
             <Selector onChange={handleSizeChange} prices={price} />
-            <Button
-              className="btn btn-sm btn-outline-success"
-              onClick={handleAddToCart}
-            >
+            <Button className="btn btn-sm btn-green" onClick={handleAddToCart}>
               Add To Cart
             </Button>
           </div>

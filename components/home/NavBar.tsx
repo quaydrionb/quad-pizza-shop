@@ -90,7 +90,7 @@ const Navbar = () => {
                     </div>
                   ) : (
                     <>
-                      <img
+                      <Image
                         src={cart}
                         alt="cart"
                         width={40}

@@ -15,7 +15,7 @@ const displayImages = [
 const HeroSection = () => {
   return (
     <Section>
-      <div className="row flex-column-reverse flex-lg-row align-items-center g-2 py-5 container-fluid mb-5">
+      <div className="row flex-lg-row-reverse align-items-center g-2 py-5 container-fluid mb-5">
         <div className="col-lg-6">
           <h2 className="container fw-bolder text-green fs-lg-3">
             Discover the Quad Experience: Square Pizzas for Square Lovers!

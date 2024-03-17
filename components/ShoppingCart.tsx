@@ -57,10 +57,7 @@ const ShoppingCart = () => {
   return (
     <div className="container mt-5">
       {cartItems.length > 0 && (
-        <h2
-          className="text-center text-white py-3 rounded mb-2"
-          style={{ backgroundColor: "#2B523D" }}
-        >
+        <h2 className="text-center text-white py-3 rounded mb-2 bg-green">
           Your Cart
         </h2>
       )}
@@ -81,7 +78,7 @@ const ShoppingCart = () => {
                   items to your cart.
                 </p>
                 <Link href="/items">
-                  <button className="btn btn-outline-success rounded-pill">
+                  <button className="btn btn-green rounded-pill">
                     Return to Shopping
                   </button>
                 </Link>
@@ -91,34 +88,38 @@ const ShoppingCart = () => {
         </div>
       ) : (
         <div className="row">
-          <div className="col-lg-8">
+          <div className="col-lg-7">
             {cartItems.map((item: any, index: number) => (
-              <div className="card mb-4 shadow-sm border-0" key={index}>
+              <div className="card mb-4 shadow  border-1" key={index}>
                 <div className="row g-0">
                   <div className="col-md-4">
                     <div className="d-flex align-items-center justify-content-center h-100">
                       <Image
                         src={item.itemSrc}
                         alt={item.title}
-                        width={300}
-                        height={300}
-                        className="img-fluid rounded-start order-img"
-                        style={{ objectFit: "cover" }}
+                        width={200}
+                        height={200}
+                        className="rounded-start object-fit-sm-scale object-fit-lg-cover"
                       />
                     </div>
                   </div>
                   <div className="col-md-8">
                     <div className="card-body d-flex flex-column justify-content-between h-100">
                       <div>
-                        <h5 className="card-title mb-3">{item.title}</h5>
+                        <h5 className="card-title mb-3 fs-4 text-green fw-bold">
+                          {item.title}
+                        </h5>
                         <div className="item-details">
                           <div className="item-detail">
                             <span className="detail-label">Price:</span>
                             <span className="detail-value">${item.price}</span>
                           </div>
                           <div className="item-detail">
-                            <span className="detail-label">Size:</span>
-                            <span className="detail-value">{item.size}</span>
+                            <span className="detail-label ">Size:</span>
+                            <span className="detail-value">
+                              {item.size.charAt(0).toUpperCase() +
+                                item.size.slice(1)}
+                            </span>
                           </div>
                         </div>
                       </div>
@@ -138,7 +139,7 @@ const ShoppingCart = () => {
                             {item.quantity}
                           </div>
                           <button
-                            className="btn btn-sm btn-success"
+                            className="btn btn-sm bg-green"
                             onClick={() => handleIncrement(index)}
                           >
                             +
@@ -158,7 +159,7 @@ const ShoppingCart = () => {
             ))}
           </div>
 
-          <div className="col-lg-4">
+          <div className="col-lg-5">
             <div className="card mb-3">
               <div className="card-body">
                 <h5 className="card-title">Shopping Cart Summary</h5>
@@ -184,7 +185,7 @@ const ShoppingCart = () => {
             </div>
             <div className="d-flex justify-content-between mb-4">
               <Link href="/items">
-                <button className="btn btn-outline-success rounded-pill">
+                <button className="btn btn-green rounded-pill">
                   Continue Shopping
                 </button>
               </Link>

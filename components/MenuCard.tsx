@@ -34,28 +34,32 @@ const MenuCard = ({ itemSrc, alt, title, desc, prices, id }: Props) => {
     >
       <div className="card rounded-3 shadow">
         <div className="row g-0">
-          <div className="col-md-4">
+          <div className="col-md-4 ">
             <Image
               src={itemSrc}
               alt={alt}
-              width={300}
+              width={200}
               height={300}
-              className="card-img-top img-fluid rounded-start"
+              className="rounded-start  object-fit-sm-scale object-fit-lg-cover"
             />
           </div>
-          <div className="col-md-8">
+          <div className="col-md-8 col-xl-7">
             <div className="card-body">
-              <h5 className="card-title mb-2">{title}</h5>
-              <p className="card-text mb-3 fs-5">{desc}</p>
-              <div className="d-flex flex-column flex-md-row justify-content-between align-items-center">
-                <span className="fw-bold fs-5 mb-2 mb-md-0">${prices}</span>
-                <Modal
-                  productId={id}
-                  title={title}
-                  src={itemSrc}
-                  alt={alt}
-                  desc={desc}
-                />
+              <h5 className="card-title mb-2 fs-4 text-green fw-bolder">
+                {title}
+              </h5>
+              <p className="card-text mb-md-3 fs-5">{desc}</p>
+              <div className="d-md-flex flex-md-row justify-content-between align-items-center">
+                <span className="fw-bold mb-2 mb-md-0 fs-5">${prices}</span>
+                <div className="mt-2 mt-md-0">
+                  <Modal
+                    productId={id}
+                    title={title}
+                    src={itemSrc}
+                    alt={alt}
+                    desc={desc}
+                  />
+                </div>
               </div>
             </div>
           </div>

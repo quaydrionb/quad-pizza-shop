@@ -49,7 +49,7 @@ export default function Modal({ title, src, alt, desc, productId }: Props) {
     <React.Fragment>
       <Button
         onClick={handleClickOpen}
-        className="btn  view-button btn-sm mx-md-2"
+        className="btn  view-button btn-sm  text-decoration-none "
       >
         View Details{" "}
         <span>
