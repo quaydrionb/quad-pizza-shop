@@ -66,6 +66,11 @@ const Navbar = () => {
           >
             <ul className="navbar-nav fw-bold">
               <li className="nav-item">
+                <Link href="/" className="nav-link" onClick={toggleMenu}>
+                  Home
+                </Link>
+              </li>
+              <li className="nav-item">
                 <Link href="/#menu" className="nav-link" onClick={toggleMenu}>
                   Menu
                 </Link>
@@ -73,20 +78,6 @@ const Navbar = () => {
               <li className="nav-item">
                 <Link href="/#about" className="nav-link" onClick={toggleMenu}>
                   About
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link href="/#arcade" className="nav-link" onClick={toggleMenu}>
-                  Arcade
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link
-                  href="/#contact"
-                  className="nav-link"
-                  onClick={toggleMenu}
-                >
-                  Contact
                 </Link>
               </li>
             </ul>
