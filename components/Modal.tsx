@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import Button from "@mui/material/Button";
+
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
@@ -25,7 +25,6 @@ import {
   wingItem,
 } from "../lib/data/menuData";
 
-const arrow = "assets/icons/arrow-right.svg";
 export default function Modal({ title, src, alt, desc, productId }: Props) {
   const [open, setOpen] = React.useState(false);
   const theme = useTheme();
@@ -47,15 +46,12 @@ export default function Modal({ title, src, alt, desc, productId }: Props) {
   const items = [...drinkItem, ...dessertItem, ...pizzaItem, ...wingItem];
   return (
     <React.Fragment>
-      <Button
+      <button
         onClick={handleClickOpen}
-        className="btn  view-button btn-sm  text-decoration-none "
+        className="btn  view-button text-decoration-none "
       >
-        View Details{" "}
-        <span>
-          <Image src={arrow} alt="right arrow" height={10} width={10} />
-        </span>
-      </Button>
+        View Details
+      </button>
       <Dialog
         fullScreen={fullScreen}
         open={open}

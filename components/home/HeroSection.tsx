@@ -27,21 +27,25 @@ const HeroSection = () => {
               good vibes and arcade games. It's the perfect place to unwind and
               savor the flavor!
             </p>
-            <div className="flex justify-content-center align-items-center">
-              {Array(5)
-                .fill(1)
-                .map((_, index) => (
-                  <Image
-                    src="/assets/images/star.svg"
-                    key={index}
-                    alt="star"
-                    width={30}
-                    height={30}
-                  />
-                ))}
-              <span className="mt-3 mx-2 fw-bold text-green fs-5">
-                500 Excellent Reviews
-              </span>
+            <div className="row justify-content-center align-items-center">
+              <div className="col-auto d-flex flex-wrap align-items-center">
+                {Array(5)
+                  .fill(1)
+                  .map((_, index) => (
+                    <Image
+                      src="/assets/images/star.svg"
+                      key={index}
+                      alt="star"
+                      width={30}
+                      height={30}
+                    />
+                  ))}
+              </div>
+              <div className="col-auto">
+                <span className="mt-3 fw-bold text-green fs-5">
+                  500 Excellent Reviews
+                </span>
+              </div>
             </div>
           </div>
           <div className="d-grid gap-2 d-sm-flex justify-content-center">
@@ -49,7 +53,7 @@ const HeroSection = () => {
               <div className="text-center">
                 <button
                   type="button"
-                  className="mt-4 main-button btn btn-lg px-4"
+                  className="mt-4 mb-3 main-button btn btn-lg px-4"
                 >
                   Order Now
                 </button>
