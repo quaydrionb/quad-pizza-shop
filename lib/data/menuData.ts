@@ -44,9 +44,9 @@ export const pizzaItem = [
     title: "Quad Pizza",
     desc: "Delicious signature square pizza",
     prices: {
-      small: 8.99,
-      medium: 13.99,
-      large: 15.99,
+      small: 11.99,
+      medium: 15.99,
+      large: 17.99,
     },
     calories: {
       small: 250,

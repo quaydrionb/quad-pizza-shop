@@ -56,12 +56,14 @@ const ShoppingCart = () => {
 
   return (
     <div className="container mt-5">
-      <h2
-        className="text-center text-white py-3 rounded"
-        style={{ backgroundColor: "#2B523D" }}
-      >
-        Your Cart
-      </h2>
+      {cartItems.length > 0 && (
+        <h2
+          className="text-center text-white py-3 rounded mb-2"
+          style={{ backgroundColor: "#2B523D" }}
+        >
+          Your Cart
+        </h2>
+      )}
       {isLoading ? (
         <div className="text-center">
           <div className="spinner-border" role="status">
@@ -79,7 +81,7 @@ const ShoppingCart = () => {
                   items to your cart.
                 </p>
                 <Link href="/items">
-                  <button className="btn btn-dark rounded-pill mt-3">
+                  <button className="btn btn-outline-success rounded-pill">
                     Return to Shopping
                   </button>
                 </Link>
@@ -91,7 +93,7 @@ const ShoppingCart = () => {
         <div className="row">
           <div className="col-lg-8">
             {cartItems.map((item: any, index: number) => (
-              <div className="card mb-4 border-0 shadow-sm" key={index}>
+              <div className="card mb-4 shadow-sm border-0" key={index}>
                 <div className="row g-0">
                   <div className="col-md-4">
                     <div className="d-flex align-items-center justify-content-center h-100">
@@ -106,19 +108,21 @@ const ShoppingCart = () => {
                     </div>
                   </div>
                   <div className="col-md-8">
-                    <div className="card-body d-flex flex-column h-100">
-                      <h5 className="card-title mb-3">{item.title}</h5>
-                      <div className="item-details">
-                        <div className="item-detail">
-                          <span className="detail-label">Price:</span>
-                          <span className="detail-value">${item.price}</span>
-                        </div>
-                        <div className="item-detail">
-                          <span className="detail-label">Size:</span>
-                          <span className="detail-value">{item.size}</span>
+                    <div className="card-body d-flex flex-column justify-content-between h-100">
+                      <div>
+                        <h5 className="card-title mb-3">{item.title}</h5>
+                        <div className="item-details">
+                          <div className="item-detail">
+                            <span className="detail-label">Price:</span>
+                            <span className="detail-value">${item.price}</span>
+                          </div>
+                          <div className="item-detail">
+                            <span className="detail-label">Size:</span>
+                            <span className="detail-value">{item.size}</span>
+                          </div>
                         </div>
                       </div>
-                      <div className="actions mt-auto">
+                      <div className="actions">
                         <div
                           className="btn-group"
                           role="group"
@@ -134,14 +138,14 @@ const ShoppingCart = () => {
                             {item.quantity}
                           </div>
                           <button
-                            className="btn btn-sm btn-primary"
+                            className="btn btn-sm btn-success"
                             onClick={() => handleIncrement(index)}
                           >
                             +
                           </button>
                         </div>
                         <button
-                          className="btn btn-sm btn-danger ms-auto"
+                          className="btn btn-sm btn-danger ms-2"
                           onClick={() => handleRemoveFromCart(index)}
                         >
                           Remove
@@ -157,22 +161,30 @@ const ShoppingCart = () => {
           <div className="col-lg-4">
             <div className="card mb-3">
               <div className="card-body">
-                <h5 className="card-title">Shopping Cart</h5>
-                <p className="card-text">Total Items: {cartItems.length}</p>
-                <p className="card-text">Subtotal: ${totalAmount.toFixed(2)}</p>
-                <p className="card-text">Tax (7%): ${taxAmount.toFixed(2)}</p>
+                <h5 className="card-title">Shopping Cart Summary</h5>
                 <hr />
-                <p className="card-text fw-bold">
-                  Total: ${(totalAmount + taxAmount).toFixed(2)}
-                </p>
+                <div className="d-flex justify-content-between mb-2">
+                  <p>Total Items:</p>
+                  <p>{cartItems.length}</p>
+                </div>
+                <div className="d-flex justify-content-between mb-2">
+                  <p>Subtotal:</p>
+                  <p>${totalAmount.toFixed(2)}</p>
+                </div>
+                <div className="d-flex justify-content-between mb-2">
+                  <p>Tax (7%):</p>
+                  <p>${taxAmount.toFixed(2)}</p>
+                </div>
+                <hr />
+                <div className="d-flex justify-content-between">
+                  <p className="fw-bold">Total:</p>
+                  <p>${(totalAmount + taxAmount).toFixed(2)}</p>
+                </div>
               </div>
             </div>
             <div className="d-flex justify-content-between mb-4">
               <Link href="/items">
-                <button
-                  className="btn  rounded-pill text-white"
-                  style={{ backgroundColor: "#2B523D" }}
-                >
+                <button className="btn btn-outline-success rounded-pill">
                   Continue Shopping
                 </button>
               </Link>

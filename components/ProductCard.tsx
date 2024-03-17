@@ -14,6 +14,7 @@ interface Props {
   alt: string;
   title: string;
   desc: string;
+
   price: {
     small: number;
     medium?: number;
@@ -103,8 +104,7 @@ const ProductCard = ({ itemId, itemSrc, alt, title, desc, price }: Props) => {
           <div>
             <Selector onChange={handleSizeChange} prices={price} />
             <Button
-              size="small"
-              className="add-to-cart"
+              className="btn btn-sm btn-outline-success"
               onClick={handleAddToCart}
             >
               Add To Cart
