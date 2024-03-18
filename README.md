@@ -43,7 +43,3 @@ While Quad Pizzeria already offers a stellar experience, we're committed to cont
 
 - **Expanded Arcade Section:** Enrich the arcade experience with new games and interactive features to keep you entertained.
 
----
-
-Thank you for exploring Quad Pizzeria! We hope you enjoy your visit and savor every moment. For any inquiries or feedback, feel free to reach out to us.
-
