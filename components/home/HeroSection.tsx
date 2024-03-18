@@ -31,7 +31,7 @@ const HeroSection = () => {
               {Array(5)
                 .fill(1)
                 .map((_, index) => (
-                  <img
+                  <Image
                     src="/assets/images/star.svg"
                     key={index}
                     alt="star"

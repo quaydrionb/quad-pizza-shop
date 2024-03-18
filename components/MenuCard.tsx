@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import Image from "next/image";
 
 import Modal from "./Modal";
 
@@ -19,8 +20,8 @@ const MenuCard = ({ itemSrc, alt, title, desc, prices, id }: Props) => {
     offset: ["0 1", "1.33 1"],
   });
 
-  const scaleProgress = useTransform(scrollYProgress, [0, 1], [0.8, 1]);
-  const opacityProgress = useTransform(scrollYProgress, [0, 1], [0.6, 1]);
+  const scaleProgress = useTransform(scrollYProgress, [0, 1], [0.7, 1]);
+  const opacityProgress = useTransform(scrollYProgress, [0, 1], [0.8, 1]);
 
   return (
     <motion.div
@@ -35,7 +36,13 @@ const MenuCard = ({ itemSrc, alt, title, desc, prices, id }: Props) => {
       <div className="card rounded-3 shadow">
         <div className="row g-0">
           <div className="col-md-5 ">
-            <img src={itemSrc} alt={alt} className="img-thumbnail" />
+            <Image
+              src={itemSrc}
+              alt={alt}
+              width={200}
+              height={200}
+              className="img-thumbnail"
+            />
           </div>
           <div className="col-md-7 col-xl-7">
             <div className="card-body">
