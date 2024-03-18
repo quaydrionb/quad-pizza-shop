@@ -166,23 +166,61 @@ const ShoppingCart = () => {
               <div className="card-body">
                 <h5 className="card-title">Shopping Cart Summary</h5>
                 <hr />
-                <div className="d-flex justify-content-between mb-2">
+                <div className="d-flex justify-content-between mb-2 fs-6 ">
                   <p>Total Items:</p>
                   <p>{cartItems.length}</p>
                 </div>
-                <div className="d-flex justify-content-between mb-2">
+                <div className="d-flex justify-content-between mb-2 fs-6 ">
                   <p>Subtotal:</p>
                   <p>${totalAmount.toFixed(2)}</p>
                 </div>
-                <div className="d-flex justify-content-between mb-2">
+                <div className="d-flex justify-content-between mb-2 fs-6 ">
                   <p>Tax (7%):</p>
                   <p>${taxAmount.toFixed(2)}</p>
                 </div>
                 <hr />
-                <div className="d-flex justify-content-between">
+                <div className="d-flex justify-content-between fs-6">
                   <p className="fw-bold">Total:</p>
                   <p>${(totalAmount + taxAmount).toFixed(2)}</p>
                 </div>
+                <hr />
+                {/* <div className="container mt-4">
+                  <div className="row">
+                    <div className="col">
+                      <div className="d-flex justify-content-between align-items-center fs-6">
+                        <h5 className="fw-bold mb-0">Account Balance:</h5>
+                        <p className="mb-0">$500.00</p>
+                      </div>
+                      <div className="progress mt-2" style={{ height: "8px" }}>
+                        <div
+                          className="progress-bar bg-success"
+                          role="progressbar"
+                          style={{ width: "50%" }}
+                          aria-valuenow={50}
+                          aria-valuemin={0}
+                          aria-valuemax={100}
+                        ></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="row mt-4">
+                    <div className="col">
+                      <div className="card">
+                        <div className="card-body">
+                          <h5 className="card-title fw-bold fs-5 mb-4">
+                            Credit Card Details
+                          </h5>
+                          <div className="credit-card">
+                            <div className="chip"></div>
+                            <div className="card-number">
+                              <span className="fs-6">XXXX XXXX XXXX 3456</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div> */}
               </div>
             </div>
             <div className="d-flex justify-content-between mb-4">

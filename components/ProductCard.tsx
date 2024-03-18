@@ -102,9 +102,9 @@ const ProductCard = ({ itemId, itemSrc, alt, title, desc, price }: Props) => {
         >
           <div>
             <Selector onChange={handleSizeChange} prices={price} />
-            <Button className="btn btn-sm btn-green" onClick={handleAddToCart}>
+            <button className="btn btn-md btn-green" onClick={handleAddToCart}>
               Add To Cart
-            </Button>
+            </button>
           </div>
         </div>
       </div>

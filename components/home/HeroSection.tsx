@@ -35,11 +35,11 @@ const HeroSection = () => {
                     src="/assets/images/star.svg"
                     key={index}
                     alt="star"
-                    width={30}
-                    height={30}
+                    width={20}
+                    height={20}
                   />
                 ))}
-              <span className="mt-3 mx-2 fw-bold text-green fs-5">
+              <span className="mt-3 mx-2 fw-bold text-green fs-6">
                 500 Excellent Reviews
               </span>
             </div>

@@ -301,9 +301,6 @@ svg {
 
    }
 
-   
-
-  
 }
 
 .object-fit-sm-scale {
@@ -411,6 +408,15 @@ svg {
 }
 
 /*Shopping Cart*/
+
+.card-number {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+}
+
 
 .item-details {
   margin-bottom: 10px;
