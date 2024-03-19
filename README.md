@@ -2,19 +2,7 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/438219ac-f657-42ac-9842-c4fad855361b/deploy-status)](https://app.netlify.com/sites/quad-pizzeria/deploys)
 
-Welcome to the Quad Pizzeria website repository! 🍕 Dive into an immersive experience where you can explore and indulge in the culinary wonders of Quad Pizzeria – a vibrant pizza eatery specializing in delectable square pizzas, tantalizing wings, and heavenly desserts.
-
----
-
-## Purpose
-
-At Quad Pizzeria, we're not just about serving pizza; we're about creating memorable dining experiences. Whether you're a seasoned regular or a first-time visitor, we're dedicated to delivering excellence in every slice.
-
-### Discover Our Menu
-
-Delve into a world of culinary creativity with our diverse menu, meticulously crafted to satisfy every palate. From our signature square pizzas to our mouthwatering wings and delightful desserts, there's something to delight every taste bud.
-
----
+Welcome to the Quad Pizzeria website repository! 🍕 This web application is designed to provide a delightful and interactive experience for customers interested in exploring and ordering from Quad Pizzeria – a fictional pizza restaurant with a unique focus on square pizzas, mouthwatering wings, and delightful desserts.
 
 ## Technologies Used
 
