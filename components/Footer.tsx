@@ -1,4 +1,7 @@
+"use client";
+import { Button } from "@mui/material";
 import Image from "next/image";
+import Link from "next/link";
 
 const contact = "/assets/icons/telephone.svg";
 const location = "/assets/icons/geo-alt.svg";
@@ -45,8 +48,25 @@ const Footer = () => {
           </div>
         </div>
       </footer>
-      <div className="bottom-text  text-center py-4">
-        <p className="m-0 fw-bold ">© 2024 Quad Pizzeria, Inc</p>
+      <div className="d-flex justify-content-center align-items-center bottom-text py-4">
+        <Link
+          href="https://github.com/quaydrionb/quad-pizza-shop"
+          target="_blank"
+          passHref
+        >
+          <Button
+            className="btn btn-md me-2"
+            aria-label="Visit Quad Pizzeria GitHub Repository"
+          >
+            <Image
+              src="/assets/icons/github.svg"
+              alt="GitHub"
+              width={30}
+              height={30}
+            />
+          </Button>
+        </Link>
+        <p className="m-0 fw-bold">© 2024 Quad Pizzeria, Inc</p>
       </div>
     </>
   );
