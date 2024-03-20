@@ -43,7 +43,7 @@ const Navbar = () => {
               src="/assets/images/pizza-logo.png"
               width={110}
               height={110}
-              alt="logo"
+              alt="pizza-logo"
               className="logo"
               priority={false}
             />
