@@ -71,12 +71,12 @@ const Navbar = () => {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link href="/#menu" className="nav-link" onClick={toggleMenu}>
+                <Link href="#menu" className="nav-link" onClick={toggleMenu}>
                   Menu
                 </Link>
               </li>
               <li className="nav-item">
-                <Link href="/#about" className="nav-link" onClick={toggleMenu}>
+                <Link href="#about" className="nav-link" onClick={toggleMenu}>
                   About
                 </Link>
               </li>
