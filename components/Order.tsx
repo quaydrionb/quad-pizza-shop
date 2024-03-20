@@ -8,6 +8,7 @@ import PizzaItems from "./items/PizzaItems";
 import WingItems from "./items/WingItems";
 import DrinkItems from "./items/DrinkItems";
 import DessertItems from "./items/DessertItems";
+import Link from "next/link";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -65,6 +66,11 @@ export default function CenteredTabs() {
       <TabPanel value={value} index={3}>
         <DessertItems />
       </TabPanel>
+      <div className="d-flex justify-content-end mb-3 mx-3">
+        <Link href="/" className="btn btn-dark  btn-sm rounded-3">
+          <i className="bi bi-house-door"></i> Back to Home
+        </Link>
+      </div>
     </Box>
   );
 }
