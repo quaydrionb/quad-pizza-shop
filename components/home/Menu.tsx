@@ -11,7 +11,7 @@ import Grid from "@mui/material/Grid";
 const Menu = () => {
   return (
     <>
-      <div id="menu" className="container mb-3 rounded-3 pt-5 mt-5 pb-5">
+      <div className="container mb-3 rounded-3 pt-5 mt-5 pb-5">
         <div className="menu-title text-center mt-5 py-5 container">
           <h2 className="top-header">&mdash; Our Menu &mdash;</h2>
         </div>

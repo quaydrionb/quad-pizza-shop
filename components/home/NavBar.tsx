@@ -64,23 +64,6 @@ const Navbar = () => {
             }`}
             id="navbarNav"
           >
-            <ul className="navbar-nav fw-bold">
-              <li className="nav-item">
-                <Link href="/" className="nav-link" onClick={toggleMenu}>
-                  Home
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link href="#menu" className="nav-link" onClick={toggleMenu}>
-                  Menu
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link href="#about" className="nav-link" onClick={toggleMenu}>
-                  About
-                </Link>
-              </li>
-            </ul>
             <div className="icon-cart">
               <Link href="/cart" onClick={toggleMenu}>
                 <button type="button" className="btn btn-sm">
