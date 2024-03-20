@@ -40,10 +40,10 @@ const Navbar = () => {
         <nav className="navbar navbar-expand-lg navbar-dark">
           <Link href="/" className="navbar-brand">
             <Image
-              src="/assets/images/pizza-logo.png"
+              src="/assets/images/logo.png"
               width={110}
               height={110}
-              alt="pizza-logo"
+              alt="logo"
               className="logo"
               priority={false}
             />
