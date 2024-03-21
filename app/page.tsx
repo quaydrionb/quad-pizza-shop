@@ -9,6 +9,7 @@ import Arcade from "@/components/home/Arcade";
 import { Suspense } from "react";
 import { Provider } from "react-redux";
 import store from "@/redux/store";
+import Contact from "@/components/Contact";
 
 export default function Home() {
   const [showButton, setShowButton] = useState(false);
@@ -58,6 +59,8 @@ export default function Home() {
         <div className="mt-5 pt-5 pb-4 mb-4"></div>
         <div className="mt-5 pt-5 pb-4 mb-4"></div>
         <Arcade />
+        <div className="mt-5 pt-5 pb-4 mb-4"></div>
+        <Contact />
       </Provider>
 
       {/* Back to top button */}

@@ -448,6 +448,14 @@ svg {
   margin-right: 10px;
 }
 
+.contact-box {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+ 
+}
+
+
 /* Footer */
 footer {
   background-color: #531B20;
